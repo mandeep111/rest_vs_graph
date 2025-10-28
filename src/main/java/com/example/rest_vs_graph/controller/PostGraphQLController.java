@@ -18,7 +18,7 @@ public class PostGraphQLController {
     }
 
     @QueryMapping
-    public Post newsPost(@Argument UUID id) {
+    public Post post(@Argument UUID id) {
         return this.postService.findById(id);
     }
 }

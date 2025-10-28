@@ -1,6 +1,6 @@
 package com.example.rest_vs_graph.controller;
 
-import com.example.rest_vs_graph.model.Post;
+import com.example.rest_vs_graph.dto.PostDTO;
 import com.example.rest_vs_graph.service.PostService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,8 @@ public class PostRestController {
     }
 
     @GetMapping
-    public Post newsPost(@RequestParam UUID id) {
-        return this.postService.findById(id);
+    public PostDTO newsPost(@RequestParam UUID id) {
+        var post = this.postService.findById(id);
+        return new PostDTO().toDTO(post);
     }
 }
