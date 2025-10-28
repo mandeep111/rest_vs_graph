@@ -1,1 +1,28 @@
-spring.application.name=rest_vs_graph
+spring:
+  application:
+    name: rest_vs_graph
+  sql:
+    init:
+      platform: postgres
+  datasource:
+    url: jdbc:postgresql://${JDBC_URL:localhost:5432/news_hub}
+    username: ${JDBC_USERNAME:postgres}
+    password: ${JDBC_PASSWORD:postgres}
+  jpa:
+    properties:
+      hibernate:
+        show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+  liquibase:
+    contexts: ${LIQUIBASE_CONTEXT:dev}
+    enabled: true
+    change-log: db/changelog/changelog-master.yml
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql
+    http:
+      path: /graphql
