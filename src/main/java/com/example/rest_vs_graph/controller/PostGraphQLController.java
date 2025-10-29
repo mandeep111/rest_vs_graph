@@ -1,6 +1,6 @@
 package com.example.rest_vs_graph.controller;
 
-import com.example.rest_vs_graph.model.Post;
+import com.example.rest_vs_graph.dto.PostDTO;
 import com.example.rest_vs_graph.service.PostService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
@@ -18,7 +18,7 @@ public class PostGraphQLController {
     }
 
     @QueryMapping
-    public Post post(@Argument UUID id) {
+    public PostDTO post(@Argument UUID id) {
         return this.postService.findById(id);
     }
 }

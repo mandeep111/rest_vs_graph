@@ -21,7 +21,6 @@ public class PostRestController {
 
     @GetMapping
     public PostDTO newsPost(@RequestParam UUID id) {
-        var post = this.postService.findById(id);
-        return new PostDTO().toDTO(post);
+        return this.postService.findById(id);
     }
 }

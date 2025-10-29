@@ -32,7 +32,7 @@ public class PostDTO {
     public record CategoryDTO(UUID id, String name, String description) {
     }
 
-    public record UserDTO(UUID id, String username, String role, String email) {
+    public record UserDTO(UUID id, String name, String role, String email) {
     }
 
     public PostDTO toDTO(Post post) {

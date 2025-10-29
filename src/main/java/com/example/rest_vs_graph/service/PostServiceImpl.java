@@ -1,5 +1,6 @@
 package com.example.rest_vs_graph.service;
 
+import com.example.rest_vs_graph.dto.PostDTO;
 import com.example.rest_vs_graph.model.Post;
 import com.example.rest_vs_graph.repository.PostRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,9 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public Post findById(UUID id) {
-        return this.postRepository.findById(id).orElse(null);
+    public PostDTO findById(UUID id) {
+        return this.postRepository.findById(id)
+                .map(post -> new PostDTO().toDTO(post))
+                .orElse(null);
     }
 }
